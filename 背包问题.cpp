@@ -6,19 +6,34 @@
 
 class Solution {
 public:
-    int bagProblem(vector<int>& weight, vector<int> value){
-        return 0;
-    }
+    int bagProblem(vector<int>& weight, vector<int> value, int bag_weight){
+        vector<vector<int>> dp(weight.size(), vector<int>(bag_weight+1, 0));
 
-    
+        for (int j = weight[0]; j <= bag_weight; j++) {
+                dp[0][j] = value[0];
+        }
+
+        for (int i = 1; i < weight.size(); i++) {
+            for (int j = 0; j <= bag_weight; j++) {
+                if(j < weight[i]){
+                    dp[i][j] = dp[i-1][j];
+                }else{
+                    dp[i][j] = max(dp[i-1][j], dp[i-1][j-weight[i]] + value[i]);
+                }
+            }
+        }
+        printMatrix(dp);
+
+        return dp[weight.size()-1][bag_weight];
+    }    
 };
 
 int main(){
     Solution s;
     vector<int> weight = {1, 3, 4};
     vector<int> value = {15, 20, 30};
-
-    cout << s.bagProblem(weight, value) << endl;
+    int bag_weight = 4;
+    cout << s.bagProblem(weight, value, bag_weight) << endl;
 
     return 0;
 }

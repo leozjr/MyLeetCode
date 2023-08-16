@@ -63,11 +63,33 @@ std::vector<int> generateVector(int length = 10, bool sorted = true, bool allowD
 // 打印vector
 template<typename T>
 void printVector(const std::vector<T>& vec) {
-    std::cout << "vector: ";
-    for (const auto& elem : vec) {
-        std::cout << elem << " ";
+    std::cout << "[";
+    if (!vec.empty()) {
+        auto it = vec.begin();
+        std::cout << *it;
+        ++it;
+        for (; it != vec.end(); ++it) {
+            std::cout << ", " << *it;
+        }
     }
-    std::cout << std::endl;
+    std::cout << "]" << std::endl;
+}
+
+// 打印Matrix
+template<typename T>
+void printMatrix(const std::vector<std::vector<T>>& matrix) {
+    std::cout << "[" << endl;
+    for (auto it = matrix.begin(); it != matrix.end(); ++it) {
+        std::cout << "  [";
+        for (auto innerIt = it->begin(); innerIt != it->end(); ++innerIt) {
+            std::cout << *innerIt;
+            if (std::next(innerIt) != it->end()) {
+                std::cout << ", ";
+            }
+        }
+        std::cout << "]" << endl;
+    }
+    std::cout << "]" << std::endl;
 }
 
 #endif // LEETCODE_UTILS_H
