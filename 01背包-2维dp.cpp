@@ -7,7 +7,7 @@
 class Solution {
 public:
     int bagProblem(vector<int>& weight, vector<int> value, int bag_weight){
-        vector<vector<int>> dp(weight.size(), vector<int>(bag_weight+1, 0));
+        vector<vector<int>> dp(weight.size(), vector<int>(bag_weight+1, 0)); // dp[i][j] 的含义是当容量为 j 时，从 [0,i] 中任意取能装的最大价值
 
         for (int j = weight[0]; j <= bag_weight; j++) {
                 dp[0][j] = value[0];
@@ -18,7 +18,7 @@ public:
                 if(j < weight[i]){
                     dp[i][j] = dp[i-1][j];
                 }else{
-                    dp[i][j] = max(dp[i-1][j], dp[i-1][j-weight[i]] + value[i]);
+                    dp[i][j] = max(dp[i-1][j], dp[i-1][j-weight[i]] + value[i]); 
                 }
             }
         }
