@@ -16,6 +16,7 @@
 
 //算法
 #include <algorithm>
+#include <numeric>
 #include <climits>
 #include <random>
 using namespace std;
