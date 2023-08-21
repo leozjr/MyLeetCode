@@ -21,7 +21,7 @@
 #include <random>
 using namespace std;
 
-//自定义数据结构
+//数据结构
 struct ListNode {
       int val;
       ListNode *next;
@@ -30,7 +30,14 @@ struct ListNode {
      ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
 
 /****************常用函数*****************/
 
