@@ -1,4 +1,5 @@
 #include "LeetCodeUtils.h"
+
 class Solution {
 public:
     
@@ -6,7 +7,6 @@ public:
 
 int main(){
     Solution s;
-
 
     return 0;
 }
