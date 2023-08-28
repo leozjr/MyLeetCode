@@ -45,8 +45,10 @@ int main(){
             min_flip = min(min_flip, flip);
         }
     }
-
-    cout << min_flip;
+    if(min_flip != INT_MAX)
+        cout << min_flip;
+    else
+        cout << -1;
 
     return 0;
 }
