@@ -100,4 +100,58 @@ void printMatrix(const std::vector<std::vector<T>>& matrix) {
     std::cout << "]" << std::endl;
 }
 
+
+//生成ListNode测试序列
+ListNode* generateLinkedList(int length, int maxVal, bool sorted = false) {
+    ListNode* head = nullptr;
+    ListNode* tail = nullptr;
+
+    srand(time(NULL)); // 设置随机种子
+
+    for (int i = 0; i < length; i++) {
+        int val = rand() % maxVal; // 生成 [0, range-1] 范围内的随机数
+
+        ListNode* newNode = new ListNode(val);
+
+        if (head == nullptr) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            if (sorted) {
+                // 如果需要有序链表，则将节点插入到正确的位置
+                if (val < head->val) {
+                    newNode->next = head;
+                    head = newNode;
+                } else if (val >= tail->val) {
+                    tail->next = newNode;
+                    tail = newNode;
+                } else {
+                    ListNode* curr = head;
+                    while (curr->next != nullptr && curr->next->val <= val) {
+                        curr = curr->next;
+                    }
+                    newNode->next = curr->next;
+                    curr->next = newNode;
+                }
+            } else {
+                // 如果需要无序链表，则将节点插入到尾部
+                tail->next = newNode;
+                tail = newNode;
+            }
+        }
+    }
+
+    return head;
+}
+
+//打印链表
+void printLinkedList(ListNode* head) {
+    ListNode* curr = head;
+    while (curr != nullptr) {
+        cout << curr->val << " ";
+        curr = curr->next;
+    }
+    cout << endl;
+}
+
 #endif // LEETCODE_UTILS_H
