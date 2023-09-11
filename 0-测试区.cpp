@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-
-    ListNode* p = generateLinkedList(10, 100, true);
-    printLinkedList(p);
+    int left = 0, right = 0;
+    cout << left << right;
+    return 0;
 }
