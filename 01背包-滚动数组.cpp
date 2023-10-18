@@ -6,9 +6,10 @@ public:
 
         for (int i = 0; i < weight.size(); i++){
             for (int j = bag_weight; j >= weight[i]; j--){ // 注意遍历到 weight[i] 就停，因为 j 再小的话 i 是装不进去的，再继续遍历就错了。
-                dp[j] = max(dp[j-weight[i]] + value[i], dp[j]);
+                dp[j] = max(dp[j], dp[j-weight[i]] + value[i]);
             }
         }
+        
         printVector(dp);
         return dp[bag_weight];
     }    

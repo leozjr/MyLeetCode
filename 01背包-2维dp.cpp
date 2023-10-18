@@ -1,7 +1,8 @@
 #include "LeetCodeUtils.h"
 
 /*
-有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，得到的价值是value[i] 。每件物品只能用一次，求解将哪些物品装入背包里物品价值总和最大。
+有n件物品和一个最多能背重量为w 的背包。第i件物品的重量是weight[i]，
+得到的价值是value[i] 。每件物品只能用一次，求解将哪些物品装入背包里物品价值总和最大。
 */
 
 class Solution {
@@ -14,10 +15,10 @@ public:
         }
 
         for (int i = 1; i < weight.size(); i++) {
-            for (int j = 0; j <= bag_weight; j++) {
-                if(j < weight[i]){
+            for (int j = 1; j <= bag_weight; j++) {
+                if(j < weight[i]){ //装不下，取容量不变，不装i时的最大价值
                     dp[i][j] = dp[i-1][j];
-                }else{
+                }else{ //装得下，取不装i和装i的最大价值
                     dp[i][j] = max(dp[i-1][j], dp[i-1][j-weight[i]] + value[i]); 
                 }
             }
