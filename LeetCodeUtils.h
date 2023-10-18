@@ -42,11 +42,11 @@ struct TreeNode {
 /****************常用函数*****************/
 
 // 生成vector
-std::vector<int> generateVector(int length = 10, bool sorted = true, bool allowDuplicates = true) {
+std::vector<int> generateVector(int length = 10,int min = 0, int max = 100, bool sorted = true, bool allowDuplicates = true) {
     std::vector<int> result(length);
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(1, 50);
+    std::uniform_int_distribution<> dis(min, max);
 
     if (allowDuplicates) {
         for (int i = 0; i < length; ++i) {
